@@ -3,7 +3,7 @@
         <div class="relative w-full h-full max-w-2xl md:h-auto">
             <!-- Modal content -->
             <!-- form on dintre estan els inputs i fem submit per a enviar -->
-            <form action="{{ route('d les dadesispositiu.crear') }}" method="POST">
+            <form action="{{ 'dispositiu.crear' }}" method="POST">
                 @csrf
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->

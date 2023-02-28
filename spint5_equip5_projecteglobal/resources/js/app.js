@@ -5,14 +5,14 @@ import RouterWeb from '../js/router/index'
 
 import restaurar from "./components/restaurar.vue";
 import swiper from './components/swiper.vue';
-import buscador from "./components/buscador.vue";
+import inventory from "./components/inventory.vue";
 
 // prova
 const app = createApp({})
 
 app.use(RouterWeb)
 app.component('swiper', swiper)
-app.component('buscador', buscador)
+app.component('inventory', inventory)
 app.mount("#app")
 // Header
 createApp(Header).mount("#navbar");

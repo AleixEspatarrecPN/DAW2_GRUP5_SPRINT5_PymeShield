@@ -54,7 +54,7 @@ class DevicesController extends Controller
         return back();
     }
 
-    //Funcio per a eliminar dispositiu, assigna un valor a hidden és la data en el moment que és clica el boto
+    //acció per a eliminar dispositiu, assigna un valor a hidden és la data en el moment que és clica el boto
     public function eliminar($id){
         $dispositiu = Device::find($id);
         $dateNow = date('Y-m-d');

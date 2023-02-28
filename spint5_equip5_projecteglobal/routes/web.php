@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DevicesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -7,6 +8,9 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\RestoreController;
 use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ImageDeviceController;
+use App\Models\Device;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +42,9 @@ Route::put('/dispositivo/{id}', [DevicesController::class, 'modificar'])->name('
 Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
 
 //Mostrar inventari
-Route::get('/inventario', [InventoryController::class, 'inventario']);
-Route::post('/inventario', [InventoryController::class, 'buscar'])->name('inventari.buscar');
+Route::get('/listInventory', [InventoryController::class, 'inventario']);
+Route::get('/inventario', [InventoryController::class, 'index']);
+Route::post('/inventario/buscar', [InventoryController::class, 'buscar'])->name('inventari.buscar');
 
 
 // Imatges

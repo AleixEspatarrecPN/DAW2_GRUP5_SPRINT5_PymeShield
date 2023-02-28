@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from "vue-router"
 
 const Restaurar = () => import('../components/restaurar.vue')
 const ImageForm = () => import('../components/image-form.vue')
-const Buscador = () => import('../components/buscador.vue')
+const Inventory = () => import('../components/inventory.vue')
 
 
 const routes = [
@@ -22,9 +22,9 @@ const routes = [
         component: ImageForm
     },
     {
-        path: '/inventario',
-        name: 'Buscador',
-        component: Buscador
+        path: '/inventory',
+        name: 'Inventory',
+        component: Inventory
     },
 ]
 
