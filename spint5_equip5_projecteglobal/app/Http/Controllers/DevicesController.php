@@ -9,10 +9,8 @@ use App\Models\ImageDevice;
 class DevicesController extends Controller
 {
     //Funcio per a llistar
-    public function mostrarDispositivos(){
-        $dispositivos = Device::where('hidden', '=', null)
-            ->paginate(10);
-        return view("mostrarDispositivos", compact('dispositivos'));
+    public function devices(){
+        return Device::where('hidden', '=', null)->paginate(5);
     }
 
     //Funcio per a mostrar fotos
@@ -21,7 +19,7 @@ class DevicesController extends Controller
         $files = ImageDevice::select('location')->where('device_id', $id_device)->get();
         return view('images', compact('files', 'device'));
     }
-    
+
     //Funcio per a crer dispositiu, recuperem informacio dels inputs del modal simplementt inserir
     public function crear(Request $request){
         $dispositiu = new Device;
