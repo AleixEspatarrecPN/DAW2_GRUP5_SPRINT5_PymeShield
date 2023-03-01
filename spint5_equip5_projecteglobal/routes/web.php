@@ -35,11 +35,14 @@ Route::get('/restaurar', [RestoreController::class, 'listar']);
 Route::patch('/restaurar/{id}', [RestoreController::class, 'restaurar']) ->name('restaurar.restaurar');
 
 //Mostrar Dispositivos
-Route::get('/dispositivo', [DevicesController::class, 'mostrarDispositivos']);
-Route::get('/dispositivo/{id}', [DevicesController::class, 'show'])->name('dispositiu.show');
-Route::post('/dispositivo', [DevicesController::class, 'crear'])->name('dispositiu.crear');
-Route::put('/dispositivo/{id}', [DevicesController::class, 'modificar'])->name('dispositiu.update');
-Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
+Route::get('/devices', function(){ return view('listdevices');});
+Route::get('/devices/list', [DevicesController::class, 'devices']);
+
+// Route::get('/dispositivo', [DevicesController::class, 'mostrarDispositivos']);
+// Route::get('/dispositivo/{id}', [DevicesController::class, 'show'])->name('dispositiu.show');
+// Route::post('/dispositivo', [DevicesController::class, 'crear'])->name('dispositiu.crear');
+// Route::put('/dispositivo/{id}', [DevicesController::class, 'modificar'])->name('dispositiu.update');
+// Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
 
 //Mostrar inventari
 Route::get('/listInventory', [InventoryController::class, 'inventario']);
