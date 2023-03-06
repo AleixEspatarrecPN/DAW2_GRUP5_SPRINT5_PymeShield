@@ -12,40 +12,36 @@
     </div>
 </div>
 
-
-    <div class="flex justify-center mb-6">
-        <table class="container shadow-xl table-auto w-full rounded-lg bg-white mt-5 w-99 text-center">
-            <thead class="bg-orange-500 text-white">
-              <tr>
-                <th>Marca</th>
-                <th>Model</th>
-                <th>MAC</th>
-                <th>Wifi</th>
-                <th>Tipo</th>
-                <th>Descripcion</th>
-                <th>Estado</th>
-                <th>Núm Serie</th>          
-                </tr>
-            </thead>
-            <tbody v-if="dispositivosInventario.length > 0">        
-              <tr v-for="(dispositivo, key) in dispositivosInventario" :key="key" class="h-14 bg-orange-100 border-b hover:bg-orange-300">
-                <td>{{dispositivo.brand}}</td>
-                <td>{{dispositivo.model}}</td>
-                <td>{{dispositivo.mac_ethernet}}</td>
-                <td>{{dispositivo.mac_wifi}}</td>
-                <td>{{dispositivo.type_device_id}}</td>
-                <td>{{dispositivo.description}}</td>
-                <td>{{dispositivo.state}}</td>
-                <td>{{dispositivo.serial_number}}</td>
-              </tr>
-            </tbody>
-            <h1 class="text-lg content-center" v-else>No tienes dipositivos asignados.</h1>
-          </table>
-    </div>
-        
-        
+<div class="flex justify-center mb-6">
+    <table class="container shadow-xl table-auto w-full bg-white mt-5 w-99 text-center">
+        <thead class="bg-orange-500 text-white">
+            <tr>
+            <th>Marca</th>
+            <th>Model</th>
+            <th>MAC</th>
+            <th>Wifi</th>
+            <th>Tipo</th>
+            <th>Descripcion</th>
+            <th>Estado</th>
+            <th>Núm Serie</th>          
+            </tr>
+        </thead>
+        <tbody v-if="dispositivosInventario.length > 0">        
+            <tr v-for="(dispositivo) in dispositivosInventario" class="h-14 bg-orange-100 border-b hover:bg-orange-300">
+            <td>{{dispositivo.brand}}</td>
+            <td>{{dispositivo.model}}</td>
+            <td>{{dispositivo.mac_ethernet}}</td>
+            <td>{{dispositivo.mac_wifi}}</td>
+            <td>{{dispositivo.type_device_id}}</td>
+            <td>{{dispositivo.description}}</td>
+            <td>{{dispositivo.state}}</td>
+            <td>{{dispositivo.serial_number}}</td>
+            </tr>
+        </tbody>
+        <h1 class="text-lg content-center" v-else>No tienes dipositivos asignados.</h1>
+        </table>
+</div>     
 </template>
-
 <script>
 
 import axios from 'axios'
@@ -63,7 +59,9 @@ export default{
     },
     methods: {
         caragrDispositivos(){
-            axios.get("/listInventory")
+            axios.get("/listInventory",{
+                params
+            })
             .then(response => {
                 this.dispositivosInventario = [];
                 this.dispositivosInventario = response.data;
@@ -72,18 +70,22 @@ export default{
                 console.log(error);
         });
     },
-        buscar(){
-            axios.post('/inventario/buscar',{
-                q: this.query
-            } ).then( res => {
-                    console.log(res);
-                    console.log(this.query);
+    buscar(){
+        clearTimeout( this.setTimeoutBuscador)
+        this.setTimeoutBuscador = setTimeout(this.caragrDispositivos, 360)
+    },
+        // buscar(){
+        //     axios.post('/inventario/buscar',{
+        //         q: this.query
+        //     } ).then( res => {
+        //             console.log(res);
+        //             console.log(this.query);
 
-            }).catch( error => {
-                    console.log(error.response);
-            })
+        //     }).catch( error => {
+        //             console.log(error.response);
+        //     })
 
-        },
+        // },
     }
 }
 
