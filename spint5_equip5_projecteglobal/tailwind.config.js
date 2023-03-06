@@ -5,7 +5,13 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            'montserrat': ['Montserrat'],
+          },
+    },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
