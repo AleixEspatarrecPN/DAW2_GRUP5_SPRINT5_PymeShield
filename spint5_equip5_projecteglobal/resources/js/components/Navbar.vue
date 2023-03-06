@@ -125,7 +125,6 @@ const navigation = [
   { name: 'Presupuestos', href: '#', current: false, icon: CurrencyEuroIcon },
   { name: 'Calendario', href: '#', current: false, icon: CalendarDaysIcon },
   { name: 'Inventario', href: '/inventario' , current: false, icon: QrCodeIcon },
-  { name: 'Dispositivos', href: '/dispositivo' , current: false, icon: ComputerDesktopIcon },
   { name: 'Restaurar Disp.', href: '/restaurar' , current: false, icon: ArrowUpTrayIcon },
   ]
 
@@ -142,7 +141,7 @@ navigation.forEach(item => {
   const userNavigation = [
     { name: 'Mi Perfil', href: '#' },
     { name: 'Ajustes', href: '#' },
-    { name: 'Admin', href: '#' },
+    { name: 'Admin', href: '/devices' },
     { name: 'Cerrar Sesión', href: '#' },
   ]
   </script>
