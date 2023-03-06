@@ -12,18 +12,24 @@ class InventoryController extends Controller
         return view('inventario');
     }
 
-    public function inventario(){
-        $idUser = 1;//Aquí es possara la variable de sessióque contingui el id de la sessió
+    public function inventario(Request $request){
+        $idUser = 1;//Aquí es possara la variable de sessió que contingui el id de la sessió
 
-        $dispositivosInventario = Device::where('user_id', $idUser)->get();
+        $filtro = $request->buscar;
 
-        return $dispositivosInventario;
-    }
+$dispositivosInventario = Device::where('user_id', $idUser)
+                                ->where(function ($query) use ($filtro) {
+                                    $query->where('brand', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('model', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('mac_ethernet', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('mac_wifi', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('type_device_id', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('description', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('state', 'LIKE', '%'.$filtro.'%')
+                                        ->orWhere('serial_number', 'LIKE', '%'.$filtro.'%');                                    
+                                    })
+                                    ->get();
 
-    public function buscar(){
-        $dispositivosInventario = Device::where('model', 'like', '%' . request()->q . '%')
-            ->orWhere('brand', 'like', '%' . request()->q . '%')
-            ->paginate(10);
-        return view("inventario", compact('dispositivosInventario'));        
+        return response()->json($dispositivosInventario, 200);
     }
 }

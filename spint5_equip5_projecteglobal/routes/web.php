@@ -47,7 +47,6 @@ Route::get('/devices/list', [DevicesController::class, 'devices']);
 //Mostrar inventari
 Route::get('/listInventory', [InventoryController::class, 'inventario']);
 Route::get('/inventario', [InventoryController::class, 'index']);
-Route::post('/inventario/buscar', [InventoryController::class, 'buscar'])->name('inventari.buscar');
 
 
 // Imatges

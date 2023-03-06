@@ -23,5 +23,5 @@ app.component('list-devices', listdevices);
 
 app.mount("#app")
 // Header
-// createApp(Header).mount("#navbar");
+createApp(Header).mount("#navbar");
 
