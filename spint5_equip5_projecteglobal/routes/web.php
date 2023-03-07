@@ -31,8 +31,10 @@ Route::get('/', HomeController::class, '__invoke');
 Route::get('/index', HomeController::class);
 
 // Restaurar
-Route::get('/restaurar', [RestoreController::class, 'listar']);
-Route::patch('/restaurar/{id}', [RestoreController::class, 'restaurar']) ->name('restaurar.restaurar');
+Route::get('/restore ', function(){return view('restaurar');});
+Route::get('/restaurar',[RestoreController::class, 'devices']);
+//Route::get('/restaurar', [RestoreController::class, 'listar']);
+Route::get('/restaurar/list', [RestoreController::class, 'restaurar']);
 
 //Mostrar Dispositivos
 Route::get('/devices', function(){ return view('listdevices');});
