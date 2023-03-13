@@ -31,9 +31,9 @@ footer svg {
 }
 
 table tbody tr:nth-child(odd){
-    @apply bg-orange-200 hover:bg-orange-300;
+    @apply bg-gray-300 hover:bg-orange-300;
 }
 
 table tbody tr:nth-child(even){
-    @apply hover:bg-orange-300;
+    @apply bg-gray-200 hover:bg-orange-300;
 }

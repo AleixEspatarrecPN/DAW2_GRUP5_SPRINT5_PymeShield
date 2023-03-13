@@ -37,6 +37,8 @@ Route::patch('/restaurar/{id}', [RestoreController::class, 'restaurar']) ->name(
 //Mostrar Dispositivos
 Route::get('/devices', function(){ return view('listdevices');});
 Route::get('/devices/list', [DevicesController::class, 'devices']);
+Route::get('/devices/type_devices', [DevicesController::class, 'type_devices']);
+Route::post('/devices/create', [DevicesController::class, 'create']);
 
 // Route::get('/dispositivo', [DevicesController::class, 'mostrarDispositivos']);
 // Route::get('/dispositivo/{id}', [DevicesController::class, 'show'])->name('dispositiu.show');
