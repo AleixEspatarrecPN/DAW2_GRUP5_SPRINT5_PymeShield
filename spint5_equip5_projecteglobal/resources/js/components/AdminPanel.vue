@@ -224,7 +224,7 @@ UserGroupIcon,
 XMarkIcon,
 } from '@heroicons/vue/24/outline'
 import {
-AcademicCapIcon, CurrencyEuroIcon, CalendarDaysIcon, QrCodeIcon, BriefcaseIcon, UserIcon,
+AcademicCapIcon, CurrencyEuroIcon, CalendarDaysIcon, QrCodeIcon, BriefcaseIcon, UserIcon, ArrowUpTrayIcon,
 CheckCircleIcon,
 ChevronDownIcon,
 MagnifyingGlassIcon,
@@ -251,7 +251,8 @@ data() {
             { name: 'Formación', href: '#', current: false, icon: AcademicCapIcon },
             { name: 'Presupuestos', href: '#', current: false, icon: CurrencyEuroIcon },
             { name: 'Calendario', href: '#', current: false, icon: CalendarDaysIcon },
-            { name: 'Inventario', href: '#', current: false, icon: QrCodeIcon },
+            { name: 'Dispositivos', href: '/devices', current: false, icon: QrCodeIcon },
+            { name: 'Restaurar Dispositivos', href: '/restore', current: false, icon: ArrowUpTrayIcon },
             { name: 'Empresas', href: '/llistatEmpreses', current: false, icon: BriefcaseIcon },
             { name: 'Usuarios', href: '/userList', current: false, icon: UserIcon },
         ],

@@ -20,6 +20,10 @@ app.component('admin-layout', admin);
 const listdevices = defineAsyncComponent(() => import('./components/ListDevices.vue'));
 app.component('list-devices', listdevices);
 
+//Restaurar
+const retoredevices = defineAsyncComponent(() => import('./components/restaurar.vue'));
+app.component('restore-devices', retoredevices);
+
 
 app.mount("#app")
 // Header
