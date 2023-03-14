@@ -45,9 +45,8 @@ Route::get('/devices/list', [DevicesController::class, 'devices']);
 // Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
 
 //Mostrar inventari
-Route::get('/listInventory', [InventoryController::class, 'inventario']);
-Route::get('/inventario', [InventoryController::class, 'index']);
-
+Route::get('/inventario', function(){ return view('inventario');});
+Route::get('/listInventory', [InventoryController::class, 'listInventary']);
 
 // Imatges
 Route::get('/imagenes', [ImageDeviceController::class, 'index'])->name('image.index');
