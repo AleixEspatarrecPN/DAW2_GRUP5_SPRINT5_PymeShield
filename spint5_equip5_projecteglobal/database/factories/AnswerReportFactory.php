@@ -7,9 +7,9 @@ use App\Models\Report;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Result>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\AnswerReport>
  */
-class ResultFactory extends Factory
+class AnswerReportFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -21,7 +21,6 @@ class ResultFactory extends Factory
         $answer_id = Answer::all()->pluck('id')->toArray();
         $report_id = Report::all()->pluck('id')->toArray();
         return [
-            'hidden' => $this->faker->date(),
             'answer_id' => $this->faker->randomElement($answer_id),
             'report_id' => $this->faker->randomElement($report_id)
         ];

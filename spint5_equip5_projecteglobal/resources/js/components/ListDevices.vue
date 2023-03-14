@@ -108,14 +108,14 @@
                                     <div class="w-full">
                                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
                                         <select v-model="crear.type_device_id" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-orange-400 focus:border-orange-400">
-                                            <option selected>Seleccione un tipo...</option>
-                                            <option v-for="type in types_device" :key="type.id" :value="type.id">{{ type.name }}</option>
+                                            <option value="Seleccione">Seleccione un tipo...</option>
+                                            <option v-for="type_device in types_device" :key="type_device.id" :value="type_device.id">{{ type_device.name }}</option>
                                         </select>
                                     </div>
                                     <div class="w-full">
                                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado</label>
                                         <select v-model="crear.state" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-orange-400 focus:border-orange-400" crear.type_device_id>
-                                            <option selected>Seleccione un estado...</option>
+                                            <option value="Seleccione">Seleccione un estado...</option>
                                             <option value="Operativo">Operativo</option>
                                             <option value="En mantenimiento">En mantenimiento</option>
                                             <option value="Deshabilitado">Deshabilitado</option>
@@ -202,12 +202,12 @@
                                     <div class="w-full">
                                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo</label>
                                         <select v-model="editar.type_device_id" id="type_device_id_editar" ref="type_device_id_editar" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-orange-400 focus:border-orange-400" >
+                                            <option v-for="type_device in types_device" :key="type_device.id" :value="type_device.id">{{ type_device.name }}</option>
                                         </select>
                                     </div>
                                     <div class="w-full">
                                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado</label>
-                                        <select v-model="editar.state" class="w-full bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-orange-400 focus:border-orange-400" crear.type_device_id>
-                                            <option selected>Seleccione un estado...</option>
+                                        <select v-model="editar.state" class="w-full bg-gray-50 border border-gray-300 text-black-900 text-sm rounded focus:ring-orange-400 focus:border-orange-400" crear.type_device_id>
                                             <option value="Operativo">Operativo</option>
                                             <option value="En mantenimiento">En mantenimiento</option>
                                             <option value="Deshabilitado">Deshabilitado</option>
@@ -265,7 +265,7 @@ export default {
             types_device: [],
 
             //Variables v-model
-            crear: { brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "", state: "",serial_number:"", description:""},
+            crear: { brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "Seleccione", state: "Seleccione",serial_number:"", description:""},
             editar: { brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "", state: "",serial_number:"", description:"" },
 
             //Variables no utilitzades
@@ -278,6 +278,7 @@ export default {
         };
     },
     mounted() {
+        this.typeDevice();
     },
     methods: {
         openModalCrear() {
@@ -285,24 +286,31 @@ export default {
             this.ModalCrear = true;
         },
         openModalEditar(brand, model, mac_ethernet, mac_wifi, type_device_id, state, serial_number, description) {
+            this.editar.brand = brand;
+            this.editar.model = model;
+            this.editar.mac_ethernet = mac_ethernet;
+            this.editar.mac_wifi = mac_wifi;
+            this.editar.type_device_id = type_device_id;
+            this.editar.state = state;
+            this.editar.serial_number = serial_number;
+            this.editar.description = description;
+
             this.ModalEditar = true;
 
-            this.typeDevice();
-
-            const select = document.getElementById("type_device_id_editar");
-
+            // const select = document.getElementById("type_device_id_editar");
+            // console.log(select);
             // Recorremos el arreglo de tipos de dispositivo y agregamos opciones al elemento select
             this.types_device.forEach(type => {
-            const option = document.createElement('option');
-            option.value = type.id;
-            option.text = type.name;
+            // const option = document.createElement('option');
+            // option.value = type.id;
+            // option.text = type.name;
 
             // Si el tipo de dispositivo coincide con el valor seleccionado, lo seleccionamos en el elemento select
             if (type.id === this.type_device_id) {
                 option.selected = true;
             }
 
-            select.appendChild(option);
+            // select.appendChild(option);
             });
 
 
