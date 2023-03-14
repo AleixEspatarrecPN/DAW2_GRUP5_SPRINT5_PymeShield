@@ -9,10 +9,8 @@ class RestoreController extends Controller
 {
 
     //Funcio per a llistar
-    public function listar(){
-
-        $listar = Device::where("hidden", "!=", null)->paginate(5);
-        return view("restaurar", compact("listar"));
+    public function devices(){
+        return Device::whereNotNull("hidden")->paginate(5);
     }
 
     // Funcio per a restaurar
@@ -21,7 +19,5 @@ class RestoreController extends Controller
         $dateNow = null;
         $dispositiu->hidden = $dateNow;
         $dispositiu->save();
-
-        return back();
     }
 }

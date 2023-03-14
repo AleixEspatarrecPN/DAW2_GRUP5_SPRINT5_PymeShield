@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Grade;
+use App\Models\AnswerReport;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class GradeSeeder extends Seeder
+class AnswerReportSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class GradeSeeder extends Seeder
      */
     public function run()
     {
-        Grade::factory(12)->create();
+        AnswerReport::factory(100)->create();
     }
 }

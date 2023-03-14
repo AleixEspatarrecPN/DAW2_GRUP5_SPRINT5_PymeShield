@@ -25,7 +25,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ImpactSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(ReportSeeder::class);
         $this->call(DeviceSeeder::class);
         $this->call(ImageDeviceSeeder::class);
         $this->call(EmblemSeeder::class);
@@ -35,14 +34,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ResourceTextSeeder::class);
         $this->call(ActivitySeeder::class);
         $this->call(DeliverySeeder::class);
-        $this->call(GradeSeeder::class);
         $this->call(RatingSeeder::class);
         $this->call(CourseUserSeeder::class);
-        $this->call(QuestionnaireUserSeeder::class);
+        $this->call(ReportSeeder::class);
         $this->call(QuestionSeeder::class);
         $this->call(QuestionQuestionnaireSeeder::class);
         $this->call(AnswerSeeder::class);
-        $this->call(ResultSeeder::class);
+        $this->call(AnswerReportSeeder::class);
         $this->call(TaskSeeder::class);
+        $this->call(OptionSeeder::class);
     }
 }

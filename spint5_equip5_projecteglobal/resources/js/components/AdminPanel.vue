@@ -252,7 +252,7 @@ data() {
             { name: 'Presupuestos', href: '#', current: false, icon: CurrencyEuroIcon },
             { name: 'Calendario', href: '#', current: false, icon: CalendarDaysIcon },
             { name: 'Dispositivos', href: '/devices', current: false, icon: QrCodeIcon },
-            { name: 'Restaurar Dispositivos', href: '/restaurar', current: false, icon: ArrowUpTrayIcon },
+            { name: 'Restaurar Dispositivos', href: '/restore', current: false, icon: ArrowUpTrayIcon },
             { name: 'Empresas', href: '/llistatEmpreses', current: false, icon: BriefcaseIcon },
             { name: 'Usuarios', href: '/userList', current: false, icon: UserIcon },
         ],
