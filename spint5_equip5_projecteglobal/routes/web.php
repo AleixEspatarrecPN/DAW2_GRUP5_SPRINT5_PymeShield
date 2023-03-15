@@ -31,10 +31,11 @@ Route::get('/', HomeController::class, '__invoke');
 Route::get('/index', HomeController::class);
 
 // Restaurar
-Route::get('/restore ', function(){return view('restaurar');});
-Route::get('/restaurar',[RestoreController::class, 'devices']);
-//Route::get('/restaurar', [RestoreController::class, 'listar']);
-Route::get('/restaurar/list', [RestoreController::class, 'restaurar']);
+Route::get('/restore', function(){return view('restaurar');});
+Route::get('/restaurar',[RestoreController::class, 'devices'])->name('restaurar');
+Route::post('/restore/{id}', [RestoreController::class, 'restoreDevice'])->name('restaurar');
+Route::get('/restore/{id}', [RestoreController::class, 'getIdDevice'])->name('restaurar');
+
 
 //Mostrar Dispositivos
 Route::get('/devices', function(){ return view('listdevices');});
@@ -50,9 +51,8 @@ Route::post('/devices/edit', [DevicesController::class, 'edit']);
 // Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
 
 //Mostrar inventari
-Route::get('/listInventory', [InventoryController::class, 'inventario']);
-Route::get('/inventario', [InventoryController::class, 'index']);
-
+Route::get('/inventario', function(){ return view('inventario');});
+Route::get('/listInventory', [InventoryController::class, 'listInventary']);
 
 // Imatges
 Route::get('/imagenes', [ImageDeviceController::class, 'index'])->name('image.index');
