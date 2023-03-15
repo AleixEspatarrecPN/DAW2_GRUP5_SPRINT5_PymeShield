@@ -1,8 +1,8 @@
 <template>
     <!-- Taula restore devices  -->
-    <div class="m-5">
-            <table class="table-fixed w-full text-base text-left text-gray-800 dark:text-gray-400 text-center">
-                <thead class="text-xs text-white uppercase bg-orange-400 dark:bg-gray-700 dark:text-gray-400">
+    <div class="flex justify-center overflow-x-auto">
+            <table class="container table-auto w-full shadow-lg rounded-lg">
+                <thead class="bg-orange-500 text-white">
                     <tr>
                         <th scope="col" class="px-6 py-3 ">Marca</th>
                         <th scope="col" class="px-6 py-3">Modelo</th>
@@ -15,26 +15,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="device in restoreData.data" :key="device.id" class="bg-gray-100 border-b dark:bg-gray-800 dark:border-gray-700">
-                        <td class="px-6 py-4">
+                    <tr v-for="device in restoreData.data" :key="device.id" class="bg-orange-50 hover:bg-orange-100 text-center">
+                        <td class="px-6 py-3">
                             {{ device.brand }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.model }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.mac_ethernet }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.mac_wifi }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.type_device_id }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.description }}
                         </td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-3">
                             {{ device.state }}
                         </td>
                         <td class="px-4 py-4 text-center align-middle" >
@@ -123,13 +123,14 @@
                 </tbody>
             </table>
         <!-- Paginació amb TailWind -->
-        <div class="flex justify-center mt-4">
-            <TailwindPagination
-            :data="restoreData"
-            @pagination-change-page="getDevices"
-        />
-        </div>
+
     </div>
+    <div class="flex justify-center mt-4">
+      <TailwindPagination
+      :data="restoreData"
+      @pagination-change-page="getDevices"
+  />
+  </div>
 </template>
 <script>
 import axios from 'axios';
