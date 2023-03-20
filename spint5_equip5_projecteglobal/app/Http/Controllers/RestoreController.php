@@ -13,11 +13,17 @@ class RestoreController extends Controller
         return Device::whereNotNull("hidden")->paginate(5);
     }
 
-    // Funcio per a restaurar
-    public function restaurar($id){
+    // Funcio per a restaurar, no tenen id, posarem serial_number 
+    public function restoreDevice($id){
         $dispositiu = Device::find($id);
         $dateNow = null;
         $dispositiu->hidden = $dateNow;
         $dispositiu->save();
+        return redirect()->back();
+    }
+    public function getIdDevice($id){
+        $dispositiu = Device::find($id);
+        $dispositiu->save();
+        return redirect()->back();
     }
 }

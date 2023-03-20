@@ -31,22 +31,19 @@ Route::get('/', HomeController::class, '__invoke');
 Route::get('/index', HomeController::class);
 
 // Restaurar
-Route::get('/restore ', function(){return view('restaurar');});
-Route::get('/restaurar',[RestoreController::class, 'devices']);
-//Route::get('/restaurar', [RestoreController::class, 'listar']);
-Route::get('/restaurar/list', [RestoreController::class, 'restaurar']);
+Route::get('/restore', function(){return view('restaurar');});
+Route::get('/restaurar',[RestoreController::class, 'devices'])->name('restaurar');
+Route::post('/restore/{id}', [RestoreController::class, 'restoreDevice'])->name('restaurar');
+Route::get('/restore/{id}', [RestoreController::class, 'getIdDevice'])->name('restaurar');
+
 
 //Mostrar Dispositivos
 Route::get('/devices', function(){ return view('listdevices');});
 Route::get('/devices/list', [DevicesController::class, 'devices']);
 Route::get('/devices/type_devices', [DevicesController::class, 'type_devices']);
 Route::post('/devices/create', [DevicesController::class, 'create']);
-
-// Route::get('/dispositivo', [DevicesController::class, 'mostrarDispositivos']);
-// Route::get('/dispositivo/{id}', [DevicesController::class, 'show'])->name('dispositiu.show');
-// Route::post('/dispositivo', [DevicesController::class, 'crear'])->name('dispositiu.crear');
-// Route::put('/dispositivo/{id}', [DevicesController::class, 'modificar'])->name('dispositiu.update');
-// Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
+Route::post('/devices/edit', [DevicesController::class, 'edit']);
+Route::post('/devices/delete', [DevicesController::class, 'delete']);
 
 //Mostrar inventari
 Route::get('/inventario', function(){ return view('inventario');});
