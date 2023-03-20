@@ -43,12 +43,7 @@ Route::get('/devices/list', [DevicesController::class, 'devices']);
 Route::get('/devices/type_devices', [DevicesController::class, 'type_devices']);
 Route::post('/devices/create', [DevicesController::class, 'create']);
 Route::post('/devices/edit', [DevicesController::class, 'edit']);
-
-// Route::get('/dispositivo', [DevicesController::class, 'mostrarDispositivos']);
-// Route::get('/dispositivo/{id}', [DevicesController::class, 'show'])->name('dispositiu.show');
-// Route::post('/dispositivo', [DevicesController::class, 'crear'])->name('dispositiu.crear');
-// Route::put('/dispositivo/{id}', [DevicesController::class, 'modificar'])->name('dispositiu.update');
-// Route::patch('/dispositivo/{id}', [DevicesController::class, 'eliminar'])->name('dispositiu.eliminar');
+Route::post('/devices/delete', [DevicesController::class, 'delete']);
 
 //Mostrar inventari
 Route::get('/inventario', function(){ return view('inventario');});
