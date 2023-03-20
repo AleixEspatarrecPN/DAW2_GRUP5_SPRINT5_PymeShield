@@ -6,6 +6,7 @@ import RouterWeb from '../js/router/index'
 import restaurar from "./components/restaurar.vue";
 import swiper from './components/swiper.vue';
 import inventory from "./components/inventory.vue";
+import axiosPlugin from './plugins/AxiosPlugin';
 
 // prova
 const app = createApp({})
@@ -13,6 +14,7 @@ const app = createApp({})
 // app.use(RouterWeb)
 app.component('swiper', swiper);
 app.component('inventory', inventory);
+app.use(axiosPlugin);
 
 const admin = defineAsyncComponent(() => import('./components/AdminPanel.vue'));
 app.component('admin-layout', admin);
