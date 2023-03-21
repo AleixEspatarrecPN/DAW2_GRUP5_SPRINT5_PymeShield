@@ -8,7 +8,7 @@
             <thead class="text-sm text-white uppercase bg-orange-400 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 ">{{ $t('brand') }}</th>
-                    <th scope="col" class="px-6 py-3">Modelo</th>
+                    <th scope="col" class="px-6 py-3">{{ $t('model') }}</th>
                     <th scope="col" class="px-6 py-3">MAC-ethernet</th>
                     <th scope="col" class="px-6 py-3">MAC-wifi</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
@@ -519,7 +519,7 @@ export default {
                 this.getDevices();
                 this.ModalBorrar = false;
             })
-                .catch(error => {
+            .catch(error => {
                 console.error(error);
             });
         },
@@ -529,5 +529,5 @@ export default {
 
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { PlusCircleIcon, ShieldCheckIcon, ArchiveBoxArrowDownIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
+import { PlusCircleIcon, ArchiveBoxArrowDownIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
 </script>
