@@ -1,7 +1,8 @@
 import { createApp, defineAsyncComponent } from "vue/dist/vue.esm-bundler"
+import { i18nVue } from 'laravel-vue-i18n'
 
 import Header from "./components/Navbar.vue";
-import RouterWeb from '../js/router/index'
+import RouterWeb from '../js/router/index';
 
 import restaurar from "./components/restaurar.vue";
 import swiper from './components/swiper.vue';
@@ -26,6 +27,12 @@ app.component('list-devices', listdevices);
 const retoredevices = defineAsyncComponent(() => import('./components/restaurar.vue'));
 app.component('restore-devices', retoredevices);
 
+app.use(i18nVue, {
+    resolve: async lang => {
+        const langs = import.meta.glob('../lang/*.json');
+        return await langs[`../lang/${lang}.json`]();
+    }
+});
 
 app.mount("#app")
 // Header

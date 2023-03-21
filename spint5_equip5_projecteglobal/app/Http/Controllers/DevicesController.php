@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Device;
 use App\Models\ImageDevice;
 use App\Models\TypeDevice;
+use Carbon\Carbon;
 
 class DevicesController extends Controller
 {
@@ -55,7 +56,7 @@ class DevicesController extends Controller
     //acció per a eliminar dispositiu, assigna un valor a hidden és la data en el moment que és clica el boto
     public function delete(Request $request){
         $device = Device::find($request->id);
-        $dateNow = date('Y-m-d');
+        $dateNow = Carbon::now();
         $device->hidden = $dateNow;
         $device->save();
     }
