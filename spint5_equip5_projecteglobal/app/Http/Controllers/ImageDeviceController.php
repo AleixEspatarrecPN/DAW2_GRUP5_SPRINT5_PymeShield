@@ -42,6 +42,5 @@ class ImageDeviceController extends Controller
                 'device_id' => 1
             ]);
         }
-
     }
 }
