@@ -455,6 +455,12 @@ export default {
                 this.clearErrors();
             }
         },
+
+        ModalEditar(newValue, oldValue) {
+            if (oldValue === true && newValue === false) {
+                this.clearErrors();
+            }
+        },
     },
     methods: {
         getDevices(page = 1) {
