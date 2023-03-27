@@ -15,7 +15,7 @@ class RestoreTest extends TestCase
 {
 
     use RefreshDatabase;
-    use DatabaseMigrations;
+    // use DatabaseMigrations;
     /**
      * My test implementation
      */

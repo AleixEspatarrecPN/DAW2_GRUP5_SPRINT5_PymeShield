@@ -1,4 +1,16 @@
 {
     "brand" : "Marca",
-    "model" : "Modelo"
+    "model" : "Modelo",
+    "MAC-ethernet" : "MAC-ethernet",
+    "MAC-wifi" : "MAC-wifi",
+    "Type" : "Tipo",
+    "Desc" : "Descricion",
+    "State" : "Estado", 
+    "SerialN" : "Núm. Serie",
+    "Functions" : "Funciones",
+    "CreateDev" : "Crear Dispositivo",
+    "InventoryPage" : "Inventario de dispositivos",
+    "DevicePage" : "Gestion de dispositivos",
+    "RestorePage" : "Restaurar dispositivos"
+
 }
