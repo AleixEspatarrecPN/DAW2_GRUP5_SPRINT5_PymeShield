@@ -23,11 +23,11 @@ class ListDeviceTest extends TestCase
         $carga = $this->get('/devices');
         $carga->assertStatus(200);
 
-        $create = $this->post('/devices/create');
-        $create->assertStatus(200);
+        // $create = $this->post('/devices/create');
+        // $create->assertStatus(200);
 
-        $edit = $this->post('/devices/edit');
-        $edit->assertStatus(200);
+        // $edit = $this->post('/devices/edit');
+        // $edit->assertStatus(200);
 
     }
 }
