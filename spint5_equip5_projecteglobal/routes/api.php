@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventoryController;
+use App\Http\Controllers\DevicesController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/devicelist',[InventoryController::class, 'index']);
+Route::post('/devices/delete', [DevicesController::class, 'delete']);

@@ -48,7 +48,7 @@ Route::get('/devices/list', [DevicesController::class, 'devices']);
 Route::get('/devices/type_devices', [DevicesController::class, 'type_devices']);
 Route::post('/devices/create', [DevicesController::class, 'create']);
 Route::post('/devices/edit', [DevicesController::class, 'edit']);
-Route::post('/devices/delete', [DevicesController::class, 'delete']);
+//Route::post('/devices/delete', [DevicesController::class, 'delete']);
 
 //Mostrar inventari
 Route::get('/inventario', function(){ return view('inventario');});

@@ -5,6 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Device;
+
 
 class ListDeviceTest extends TestCase
 {
@@ -15,8 +17,17 @@ class ListDeviceTest extends TestCase
      */
     public function test_example()
     {
-        $response = $this->get('/');
+        //Creem una instancia del model sense persistencia
 
-        $response->assertStatus(200);
+
+        $carga = $this->get('/devices');
+        $carga->assertStatus(200);
+
+        $create = $this->post('/devices/create');
+        $create->assertStatus(200);
+
+        $edit = $this->post('/devices/edit');
+        $edit->assertStatus(200);
+
     }
 }
