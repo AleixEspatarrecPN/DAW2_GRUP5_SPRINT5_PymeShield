@@ -14,6 +14,7 @@ use App\Models\Device;
 class RestoreTest extends TestCase
 {
 
+    use RefreshDatabase;
     use DatabaseMigrations;
     /**
      * My test implementation
@@ -21,7 +22,7 @@ class RestoreTest extends TestCase
     public function testApproachIsIncredible()
     {
         //Creem una instancia del model sense persistencia
-        $device = Device::factory()->make([
+        $device = Device::factory()->create([
             'id' => '1',
             'brand' => 'Asus',
             'model' => 'Pro',
@@ -32,15 +33,14 @@ class RestoreTest extends TestCase
             'tag' => 'Si',
             'serial_number' => '07878966865',
             'type_device_id' => '2',
-            'user_id' => '12',
+            // 'user_id' => '12',
             'hidden' => null,
         ]);
 
         $carga = $this->get('/restore');
         $carga->assertStatus(200);
 
-        $id = 1; // Número de ejemplo
-        $response = $this->post(route('restaurar',  ['id' => $device->id]));
+        $response = $this->post(route('restaurar',  ['id' => '1']));
         $response->assertStatus(200);
 
     }

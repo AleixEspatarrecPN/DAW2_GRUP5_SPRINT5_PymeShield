@@ -18,7 +18,7 @@ class InventoryController extends Controller
     // }
 
     public function listInventary(Request $request){
-        $idUser = 1;//Aquí es possara la variable de sessió que contingui el id de la sessió
+        $idUser = 3;//Aquí es possara la variable de sessió que contingui el id de la sessió
 
         $filtro = $request->buscar;
 
