@@ -9,6 +9,7 @@ use Laravel\Dusk\Browser;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
+use App\Models\Device;
 
 class RestoreTest extends TestCase
 {
@@ -19,14 +20,27 @@ class RestoreTest extends TestCase
      */
     public function testApproachIsIncredible()
     {
-        //Artisan::call('migrate');
-        
+        //Creem una instancia del model sense persistencia
+        $device = Device::factory()->make([
+            'id' => '1',
+            'brand' => 'Asus',
+            'model' => 'Pro',
+            'mac_ethernet' => 'EC:06:70:6E:CF:59',
+            'mac_wifi' => '3A:79:AE:L8:77:4B',
+            'description' => 'Dispositiu Computacio',
+            'state' => 'actiu',
+            'tag' => 'Si',
+            'serial_number' => '07878966865',
+            'type_device_id' => '2',
+            'user_id' => '12',
+            'hidden' => null,
+        ]);
 
         $carga = $this->get('/restore');
         $carga->assertStatus(200);
 
         $id = 1; // Número de ejemplo
-        $response = $this->post(route('restaurar', $id));
+        $response = $this->post(route('restaurar',  ['id' => $device->id]));
         $response->assertStatus(200);
 
     }

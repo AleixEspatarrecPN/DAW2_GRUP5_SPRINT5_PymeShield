@@ -12,10 +12,10 @@ class InventoryController extends Controller
         return Device::all();
     }
 
-    public function listInventaryAPI($id){
-        // $idUser = 1;//Aquí es possara la variable de sessió que contingui el id de la sessió
-        return Device::findOrFail($id)->get();
-    }
+    // public function listInventaryAPI($id){
+    //     // $idUser = 1;//Aquí es possara la variable de sessió que contingui el id de la sessió
+    //     return Device::findOrFail($id)->get();
+    // }
 
     public function listInventary(Request $request){
         $idUser = 1;//Aquí es possara la variable de sessió que contingui el id de la sessió

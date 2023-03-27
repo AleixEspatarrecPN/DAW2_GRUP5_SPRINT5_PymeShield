@@ -627,8 +627,8 @@ export default {
             return true;
 
         },
-        submitFormBorrar() {
-            axios.post("devices/delete", {
+        submitFormBorrar(){
+            this.$axios.post("devices/delete", {
                 id: this.borrar.id
             })
                 .then(response => {
