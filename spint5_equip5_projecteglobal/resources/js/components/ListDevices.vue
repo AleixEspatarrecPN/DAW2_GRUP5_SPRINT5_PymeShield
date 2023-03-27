@@ -8,7 +8,7 @@
             <thead class="text-sm text-white uppercase bg-orange-400 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3 ">{{ $t('brand') }}</th>
-                    <th scope="col" class="px-6 py-3">Modelo</th>
+                    <th scope="col" class="px-6 py-3">{{ $t('model') }}</th>
                     <th scope="col" class="px-6 py-3">MAC-ethernet</th>
                     <th scope="col" class="px-6 py-3">MAC-wifi</th>
                     <th scope="col" class="px-6 py-3">Tipo</th>
@@ -42,7 +42,8 @@
                         {{ device.state }}
                     </td>
                     <td class="px-4 py-4 text-center align-middle">
-                        <button @click="openModalBorrar(device.id)" class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-2 ml-2 rounded ">
+                        <button @click="openModalBorrar(device.id)"
+                            class="bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-2 ml-2 rounded ">
                             <ArchiveBoxArrowDownIcon class="h-6 w-6 text-white-400" aria-hidden="true" />
                         </button>
                         <button
@@ -55,7 +56,8 @@
             </tbody>
         </table>
         <div class="flex justify-center mt-4">
-            <TailwindPagination :data="devices" @pagination-change-page="changePage" :current-page="devicesData.current_page"/>
+            <TailwindPagination :data="devices" @pagination-change-page="changePage"
+                :current-page="devicesData.current_page" />
         </div>
 
     </div>
@@ -90,7 +92,11 @@
                                         </div>
 
                                         <div class="mt-3 text-center md:text-left">
-
+                                            <div v-if="errors.length > 0" class="bg-red-100 text-red-700 p-2 rounded-md">
+                                                <ul>
+                                                    <li v-for="error in errors" :key="error"> · {{ error }}</li>
+                                                </ul>
+                                            </div>
                                             <div class="mt-2">
                                                 <div>
                                                     <label
@@ -222,7 +228,11 @@
                                         </div>
 
                                         <div class="mt-3 text-center md:text-left">
-
+                                            <div v-if="errors.length > 0" class="bg-red-100 text-red-700 p-2 rounded-md">
+                                                <ul>
+                                                    <li v-for="error in errors" :key="error"> · {{ error }}</li>
+                                                </ul>
+                                            </div>
                                             <div class="mt-2">
                                                 <div>
                                                     <label
@@ -326,48 +336,61 @@
 
     <!-- Modal eliminar -->
     <TransitionRoot as="template" :show="ModalBorrar">
-    <Dialog as="div" class="relative z-10" @close="ModalBorrar = false">
-        <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"/>
-        </TransitionChild>
-
-        <div class="fixed inset-0 z-10 overflow-y-auto">
-        <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-            <DialogPanel class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
-            <form @submit.prevent="submitForm">
-                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div class="xl:items-start">
-                    <div class="flex space-x-2 items-center">
-                        <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                        <ArchiveBoxArrowDownIcon class="h-6 w-6 text-orange-400" aria-hidden="true" />
-                        </div>
-                        <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">Eliminar dispositivo</DialogTitle>
-                    </div>
-
-                    <div class="mt-3 text-center md:text-left">
-
-                            <div class="mt-2">
-                                <div>
-                                    <h4>Estas seguro que quieres eliminar este dispositivo?</h4>
-                                    <input type="hidden" v-model="baja.id">
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                </div>
-                <input type="hidden" v-model="borrar.id">
-                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                <button type="button" class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm" @click="submitFormBorrar()">Dar de baja</button>
-                <button type="button" class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" @click="ModalBorrar = false" ref="cancelButtonRef">Cancelar</button>
-                </div>
-            </form>
-            </DialogPanel>
+        <Dialog as="div" class="relative z-10" @close="ModalBorrar = false">
+            <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100"
+                leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
+                <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
             </TransitionChild>
-        </div>
-        </div>
-    </Dialog>
-</TransitionRoot>
+
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+                <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <TransitionChild as="template" enter="ease-out duration-300"
+                        enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200"
+                        leave-from="opacity-100 translate-y-0 sm:scale-100"
+                        leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
+                        <DialogPanel
+                            class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                            <form @submit.prevent="submitForm">
+                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div class="xl:items-start">
+                                        <div class="flex space-x-2 items-center">
+                                            <div
+                                                class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                                                <ArchiveBoxArrowDownIcon class="h-6 w-6 text-orange-400"
+                                                    aria-hidden="true" />
+                                            </div>
+                                            <DialogTitle as="h3" class="text-lg font-medium leading-6 text-gray-900">
+                                                Eliminar dispositivo</DialogTitle>
+                                        </div>
+
+                                        <div class="mt-3 text-center md:text-left">
+
+                                            <div class="mt-2">
+                                                <div>
+                                                    <h4>Estas seguro que quieres eliminar este dispositivo?</h4>
+                                                    <input type="hidden" v-model="baja.id">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="hidden" v-model="borrar.id">
+                                <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                    <button type="button"
+                                        class="inline-flex w-full justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                                        @click="submitFormBorrar()">Dar de baja</button>
+                                    <button type="button"
+                                        class="mt-3 inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+                                        @click="ModalBorrar = false" ref="cancelButtonRef">Cancelar</button>
+                                </div>
+                            </form>
+                        </DialogPanel>
+                    </TransitionChild>
+                </div>
+            </div>
+        </Dialog>
+    </TransitionRoot>
 </template>
 
 <script>
@@ -385,14 +408,15 @@ export default {
             ModalBorrar: ref(false),
             devices: {},
             devicesData: [],
+            errors: [],
 
             //Variables per guardar els arrays de les dades
             types_device: [],
 
             //Variables v-model
             crear: { brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "Seleccione", state: "Seleccione", serial_number: "", description: "" },
-            editar: {id:"", brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "", state: "", serial_number: "", description: "" },
-            borrar: {id:""},
+            editar: { id: "", brand: "", model: "", mac_ethernet: "", mac_wifi: "", type_device_id: "", state: "", serial_number: "", description: "" },
+            borrar: { id: "" },
 
             //Variables no utilitzades
             NotificacionCrear: ref(false),
@@ -407,6 +431,37 @@ export default {
         this.typeDevice();
         this.getDevices();
     },
+    computed: {
+        macValida() {
+            const mac = this.crear.mac_ethernet || this.crear.mac_wifi;
+            if (!mac) {
+                return true; // Si no se ha ingresado ninguna dirección MAC, no es necesario validarla
+            }
+            const regex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/; // Expresión regular para validar la dirección MAC
+            return regex.test(mac); // Devuelve true si la dirección MAC es válida, de lo contrario, devuelve false
+        },
+        macValidaEditar(){
+            const mac = this.editar.mac_ethernet || this.editar.mac_wifi;
+            if (!mac) {
+                return true; // Si no se ha ingresado ninguna dirección MAC, no es necesario validarla
+            }
+            const regex = /^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$/; // Expresión regular para validar la dirección MAC
+            return regex.test(mac); // Devuelve true si la dirección MAC es válida, de lo contrario, devuelve false
+        }
+    },
+    watch: {
+        ModalCrear(newValue, oldValue) {
+            if (oldValue === true && newValue === false) {
+                this.clearErrors();
+            }
+        },
+
+        ModalEditar(newValue, oldValue) {
+            if (oldValue === true && newValue === false) {
+                this.clearErrors();
+            }
+        },
+    },
     methods: {
         getDevices(page = 1) {
             this.devicesData.value = [];
@@ -420,7 +475,7 @@ export default {
                     console.log(error);
                 });
         },
-        changePage(page){
+        changePage(page) {
             this.getDevices(page)
         },
         openModalCrear() {
@@ -447,7 +502,7 @@ export default {
                 }
             });
         },
-        openModalBorrar(id){
+        openModalBorrar(id) {
             this.borrar.id = id;
             this.ModalBorrar = true;
         },
@@ -461,37 +516,95 @@ export default {
                 });
         },
         submitFormCrear() {
-            axios.post("/devices/create", {
-                brand: this.crear.brand,
-                model: this.crear.model,
-                mac_ethernet: this.crear.mac_ethernet,
-                mac_wifi: this.crear.mac_wifi,
-                type_device_id: this.crear.type_device_id,
-                description: this.crear.description,
-                state: this.crear.state,
-                serial_number: this.crear.serial_number
-            })
-            .then(response => {
-                this.getDevices();
-                console.log(response);
-                    this.ModalCrear = false;
+            this.errors = [];
 
-                    this.crear.brand = "",
-                    this.crear.description = "",
-                    this.crear.mac_ethernet = "",
-                    this.crear.mac_wifi = "",
-                    this.crear.description = "",
-                    this.crear.state = "",
-                    this.crear.serial_number = ""
-                // this.NotificacionCrear = true;
-                // setTimeout(() => { this.NotificacionCrear = false; }, 2500);
-            })
-            .catch(error => {
-                console.error(error);
-            });
+            if (!this.crear.brand) {
+                this.errors.push("La marca es obligatoria");
+            }
+
+            if (!this.crear.model) {
+                this.errors.push("El modelo es obligatorio");
+            }
+
+            if (!this.crear.mac_ethernet && !this.crear.mac_wifi) {
+                this.errors.push("Se requiere al menos una dirección MAC");
+            }else if (!this.macValida) {
+                this.errors.push("La dirección MAC no es válida");
+            }
+
+            if (isNaN(this.crear.type_device_id)) {
+                this.errors.push("Se requiere un tipo de dispositivo");
+            }
+
+            if (!["Operativo", "En mantenimiento", "Deshabilitado"].includes(this.crear.state)) {
+                this.errors.push("Se requiere un estado válido");
+            }
+
+            if (!this.crear.serial_number) {
+                this.errors.push("El número de serie es obligatorio");
+            }
+
+            if (this.errors.length === 0) {
+                axios.post("/devices/create", {
+                    brand: this.crear.brand,
+                    model: this.crear.model,
+                    mac_ethernet: this.crear.mac_ethernet,
+                    mac_wifi: this.crear.mac_wifi,
+                    type_device_id: this.crear.type_device_id,
+                    description: this.crear.description,
+                    state: this.crear.state,
+                    serial_number: this.crear.serial_number
+                })
+                    .then(response => {
+                        this.getDevices();
+                        console.log(response);
+                        this.ModalCrear = false;
+
+                        this.crear.brand = "",
+                            this.crear.description = "",
+                            this.crear.mac_ethernet = "",
+                            this.crear.mac_wifi = "",
+                            this.crear.description = "",
+                            this.crear.state = "",
+                            this.crear.serial_number = ""
+                        // this.NotificacionCrear = true;
+                        // setTimeout(() => { this.NotificacionCrear = false; }, 2500);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+            return true;
         },
-        submitFormEditar(){
-            axios.post('/devices/edit',{
+        submitFormEditar() {
+            if (!this.editar.brand) {
+                this.errors.push("La marca es obligatoria");
+            }
+
+            if (!this.editar.model) {
+                this.errors.push("El modelo es obligatorio");
+            }
+
+            if (!this.editar.mac_ethernet && !this.editar.mac_wifi) {
+                this.errors.push("Se requiere al menos una dirección MAC");
+            }else if (!this.macValidaEditar) {
+                this.errors.push("La dirección MAC no es válida");
+            }
+
+            if (isNaN(this.editar.type_device_id)) {
+                this.errors.push("Se requiere un tipo de dispositivo");
+            }
+
+            if (!["Operativo", "En mantenimiento", "Deshabilitado"].includes(this.editar.state)) {
+                this.errors.push("Se requiere un estado válido");
+            }
+
+            if (!this.editar.serial_number) {
+                this.errors.push("El número de serie es obligatorio");
+            }
+
+            if (this.errors.length === 0) {
+                axios.post('/devices/edit', {
                 id: this.editar.id,
                 brand: this.editar.brand,
                 model: this.editar.model,
@@ -501,27 +614,33 @@ export default {
                 description: this.editar.description,
                 state: this.editar.state,
                 serial_number: this.editar.serial_number
-            })
-            .then(response => {
-                this.getDevices();
-                this.ModalEditar = false;
-                console.log(response)
-            })
-            .then(error => {
-                console.log(error)
-            })
+                })
+                .then(response => {
+                    this.getDevices();
+                    this.ModalEditar = false;
+                    console.log(response)
+                })
+                .then(error => {
+                    console.log(error)
+                })
+            }
+            return true;
+
         },
         submitFormBorrar(){
             this.$axios.post("devices/delete", {
                 id: this.borrar.id
             })
-            .then(response => {
-                this.getDevices();
-                this.ModalBorrar = false;
-            })
+                .then(response => {
+                    this.getDevices();
+                    this.ModalBorrar = false;
+                })
                 .catch(error => {
-                console.error(error);
-            });
+                    console.error(error);
+                });
+        },
+        clearErrors() {
+            this.errors = [];
         },
     },
 };
@@ -529,5 +648,5 @@ export default {
 
 <script setup>
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { PlusCircleIcon, ShieldCheckIcon, ArchiveBoxArrowDownIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
+import { PlusCircleIcon, ArchiveBoxArrowDownIcon, PencilSquareIcon } from '@heroicons/vue/24/outline'
 </script>
