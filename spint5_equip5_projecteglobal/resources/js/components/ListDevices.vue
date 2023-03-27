@@ -561,12 +561,12 @@ export default {
                         this.ModalCrear = false;
 
                         this.crear.brand = "",
-                            this.crear.description = "",
-                            this.crear.mac_ethernet = "",
-                            this.crear.mac_wifi = "",
-                            this.crear.description = "",
-                            this.crear.state = "",
-                            this.crear.serial_number = ""
+                        this.crear.description = "",
+                        this.crear.mac_ethernet = "",
+                        this.crear.mac_wifi = "",
+                        this.crear.description = "",
+                        this.crear.state = "",
+                        this.crear.serial_number = ""
                         // this.NotificacionCrear = true;
                         // setTimeout(() => { this.NotificacionCrear = false; }, 2500);
                     })
