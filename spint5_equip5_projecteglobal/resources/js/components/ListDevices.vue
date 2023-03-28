@@ -662,6 +662,8 @@ export default {
             return true;
         },
         submitFormEditar() {
+            this.errors = [];
+
             if (!this.editar.brand) {
                 this.errors.push("La marca es obligatoria");
             }

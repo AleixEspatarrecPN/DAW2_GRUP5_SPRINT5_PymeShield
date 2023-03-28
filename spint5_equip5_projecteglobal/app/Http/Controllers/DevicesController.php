@@ -15,7 +15,7 @@ class DevicesController extends Controller
         return Device::where('hidden', '=', null)
         ->join('type_devices','devices.type_device_id','=','type_devices.id')
         ->select('devices.*','type_devices.name')
-        ->orderBy('devices.id','asc')->paginate(5);
+        ->orderBy('devices.id','desc')->paginate(5);
     }
 
     //Funcio per a mostrar fotos
