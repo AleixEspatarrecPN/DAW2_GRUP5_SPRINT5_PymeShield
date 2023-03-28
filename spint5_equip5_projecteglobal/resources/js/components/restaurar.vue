@@ -1,7 +1,15 @@
 <template>
-    <!-- Taula restore devices  -->
-    <div class="flex justify-center overflow-x-auto">
-            <table class="container table-auto w-full shadow-lg rounded-lg">
+
+  <div class="mx-5 mt-3">
+    <div class="flex justify-between">
+        <div class="flex items-center">
+            <p class="text-2xl font-semibold">Reparar dispositivos</p>
+        </div>
+        <div class="flex items-center">
+        </div>
+    </div>
+  
+            <table class="mt-2 table-fixed w-full text-base text-left text-gray-800 dark:text-gray-400 text-center">
                 <thead class="bg-orange-500 text-white">
                     <tr>
                         <th scope="col" class="px-6 py-3 ">Marca</th>
@@ -15,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="device in restoreData.data" :key="device.id" class="bg-orange-50 hover:bg-orange-100 text-center">
+                    <tr v-for="device in restoreData.data" :key="device.id" class="bg-orange-50 hover:bg-orange-100 border-b dark:border-gray-700">
                         <td class="px-6 py-3">
                             {{ device.brand }}
                         </td>

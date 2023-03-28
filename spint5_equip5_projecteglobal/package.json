@@ -28,6 +28,7 @@
         "vue": "^3.2.36",
         "vue-loader": "^17.0.1",
         "vue-router": "4.0.13",
-        "vue3-dropzone": "^2.0.1"
+        "vue3-dropzone": "^2.0.1",
+        "vuejs-datepicker": "^1.6.2"
     }
 }

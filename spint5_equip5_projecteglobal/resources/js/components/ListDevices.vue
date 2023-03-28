@@ -11,7 +11,7 @@
             </div>
         </div>
         <table class="mt-2 table-fixed w-full text-base text-left text-gray-800 dark:text-gray-400 text-center">
-            <thead class="text-sm text-white uppercase bg-orange-400 dark:bg-gray-700 dark:text-gray-400">
+            <thead class="bg-orange-500 text-white">
                 <tr>
                     <th scope="col" class="px-6 py-3 ">{{ $t('brand') }}</th>
                     <th scope="col" class="px-6 py-3">{{ $t('model') }}</th>

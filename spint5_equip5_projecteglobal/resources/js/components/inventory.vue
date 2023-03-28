@@ -18,14 +18,14 @@
     <table class="container table-auto w-full shadow-lg rounded-lg">
         <thead class="bg-orange-500 text-white">
             <tr class="bg-orange-400 text-white">
-            <th class="px-6 py-3 uppercase">Marca</th>
-            <th class="px-6 py-3 uppercase">Model</th>
-            <th class="px-6 py-3 uppercase">MAC</th>
-            <th class="px-6 py-3 uppercase">Wifi</th>
-            <th class="px-6 py-3 uppercase">Tipo</th>
-            <th class="px-6 py-3 uppercase">Descripcion</th>
-            <th class="px-6 py-3 uppercase">Estado</th>
-            <th class="px-6 py-3 uppercase">Núm Serie</th>          
+            <th class="px-6 py-3 uppercase">{{ $t('brand') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('model') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('MAC-ethernet') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('MAC-wifi') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('Type') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('Desc') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('State') }}</th>
+            <th class="px-6 py-3 uppercase">{{ $t('SerialN') }}</th>          
             </tr>
         </thead>
         <tbody>        

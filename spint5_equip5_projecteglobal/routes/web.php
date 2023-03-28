@@ -41,6 +41,9 @@ Route::get('/restaurar',[RestoreController::class, 'devices'])->name('restaurar'
 Route::post('/restore/{id}', [RestoreController::class, 'restoreDevice'])->name('restaurar');
 Route::get('/restore/{id}', [RestoreController::class, 'getIdDevice'])->name('restaurar');
 
+//Mapa
+Route::get('/map', function(){return view('mapa');});
+
 
 //Mostrar Dispositivos
 Route::get('/devices', function(){ return view('listdevices');});
@@ -52,6 +55,8 @@ Route::post('/devices/edit', [DevicesController::class, 'edit']);
 
 //Mostrar inventari
 Route::get('/inventario', function(){ return view('inventario');});
+Route::get('/mapa', function(){ return view('mapa');});
+
 Route::get('/listInventory', [InventoryController::class, 'listInventary']);
 
 // Imatges
