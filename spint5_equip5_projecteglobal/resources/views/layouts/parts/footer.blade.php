@@ -19,6 +19,7 @@
                 <li><a href="mailto:support@pymeshield.com">info@pymeshield.com</a></li>
             </ul>
         </div>
+
         <div>
             <h6>RRSS</h6>
             <ul>
@@ -47,6 +48,11 @@
                     </a>
                 </li>
             </ul>
+        </div>
+        <div>
+            <h6>Localización y calendario </h6>
+            <li><a href="mailto:support@pymeshield.com">info@pymeshield.com</a></li>
+
         </div>
     </div>
 </footer>
