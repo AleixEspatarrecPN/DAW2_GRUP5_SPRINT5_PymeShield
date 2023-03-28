@@ -50,9 +50,9 @@
             </ul>
         </div>
         <div>
+            <a href="http://localhost/map">
             <h6>Localización y calendario </h6>
-            <li><a href="mailto:support@pymeshield.com">info@pymeshield.com</a></li>
-
+            </a>
         </div>
     </div>
 </footer>
