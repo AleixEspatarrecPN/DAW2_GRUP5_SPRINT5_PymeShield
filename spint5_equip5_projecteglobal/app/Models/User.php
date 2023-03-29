@@ -64,9 +64,9 @@ class User extends Authenticatable
         return $this->hasMany(Task::class);
     }
 
-    public function devices(): HasMany
+    public function deviceUser(): HasMany
     {
-        return $this->hasMany(Device::class);
+        return $this->hasMany(DeviceUser::class);
     }
 
     public function reports(): HasMany
